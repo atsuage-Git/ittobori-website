@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* Base Styles and CSS Variables */
 :root {
     --bg-color: #F9F8F6; /* 和紙のような生成り色オフホワイト */
