@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* Base Styles and CSS Variables */
 :root {
     --bg-color: #F9F8F6; /* 和紙のような生成り色オフホワイト */
@@ -71,9 +75,19 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    background-color: transparent;
     mix-blend-mode: difference;
     color: #fff;
-    transition: padding 0.5s ease;
+    box-shadow: none;
+    transition: padding 0.5s ease, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.navbar.scrolled {
+    padding: 1rem 4rem;
+    background-color: rgba(249, 248, 246, 0.95); /* 生成り色の背景 */
+    mix-blend-mode: normal; /* 重なり効果を解除 */
+    color: var(--text-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .navbar .logo h1 {
@@ -101,6 +115,11 @@ body {
     margin-left: 2rem;
     position: relative;
     text-transform: uppercase;
+    transition: color 0.5s ease;
+}
+
+.navbar.scrolled .nav-links a {
+    color: var(--text-color);
 }
 
 .nav-links a::after {
@@ -377,7 +396,22 @@ body {
 /* Responsive */
 @media screen and (max-width: 768px) {
     .navbar {
-        padding: 1.5rem 2rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .navbar.scrolled {
+        padding: 1rem 1rem;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.5rem 1rem;
+    }
+
+    .nav-links a {
+        margin-left: 0;
     }
     
     .hero-title {
