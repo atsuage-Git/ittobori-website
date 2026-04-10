@@ -111,23 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. ナビゲーションバーのスクロール制御（ヘッダー通過後に背景色を付ける）
     const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelectorAll('.nav-links a');
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 150) {
-            navbar.style.padding = '1rem 4rem';
-            navbar.style.backgroundColor = 'rgba(249, 248, 246, 0.95)'; // 生成り色の背景
-            navbar.style.mixBlendMode = 'normal'; // 重なり効果を解除
-            navbar.style.color = 'var(--text-color)';
-            navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-            navLinks.forEach(a => a.style.color = 'var(--text-color)');
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.padding = '2rem 4rem';
-            navbar.style.backgroundColor = 'transparent';
-            navbar.style.mixBlendMode = 'difference'; // 画像上で文字を反転させて読みやすくする効果
-            navbar.style.color = '#fff';
-            navbar.style.boxShadow = 'none';
-            navLinks.forEach(a => a.style.color = '#fff');
+            navbar.classList.remove('scrolled');
         }
     });
 });
