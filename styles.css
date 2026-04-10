@@ -381,7 +381,16 @@ body {
 /* Responsive */
 @media screen and (max-width: 768px) {
     .navbar {
-        padding: 1.5rem 2rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        margin-left: 0;
     }
     
     .hero-title {
