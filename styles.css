@@ -1,0 +1,402 @@
+/* Base Styles and CSS Variables */
+:root {
+    --bg-color: #F9F8F6; /* 和紙のような生成り色オフホワイト */
+    --text-color: #2C2B29; /* 柔らかく締まりのある墨色・こげ茶 */
+    --text-muted: #6B685F; /* グレーがかった茶 */
+    --accent-color: #A67C52; /* 木を連想させるアクセントカラー */
+    
+    --font-jp: 'Shippori Mincho', serif;
+    --font-en: 'Inter', sans-serif;
+    
+    --trans-duration: 0.8s;
+    --trans-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-jp);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    overflow-x: hidden;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--text-muted);
+    border-top: 1px solid var(--text-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: #fff;
+    transition: padding 0.5s ease;
+}
+
+.navbar .logo h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.navbar .logo span {
+    font-family: var(--font-en);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.2rem;
+    opacity: 0.8;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-left: 2rem;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding-top: 80px; /* ナビを避ける */
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* タイトルが無くなったため中央配置に戻す */
+    overflow: hidden;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh; /* タイトルが無くなった分画像を広くする */
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 全体を表示する */
+    transform: scale(1.03); /* ほんの少しズームした状態からスタート */
+    opacity: 0;
+    mix-blend-mode: multiply; /* 画像の白背景を透過させる */
+    transition: opacity 2s ease-in-out, transform 6s ease-out;
+}
+
+.hero-image.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Typography styles */
+.section-title {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+.section-english {
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* About Section */
+.about {
+    padding: 8rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-description {
+    font-size: 1.05rem;
+    color: var(--text-color);
+}
+
+.about-description p {
+    margin-bottom: 2rem;
+}
+
+.about-description strong {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 6rem 5% 10rem;
+}
+
+.gallery-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: -3rem;
+    margin-bottom: 4rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px; /* 余白を少なくして洗練された印象に */
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    background-color: #EBE8E0;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--trans-duration) var(--trans-ease), filter var(--trans-duration) ease;
+    filter: brightness(0.95);
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+    color: #fff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item-title {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Footer */
+.footer {
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    background-color: #EFECE3; /* 少し濃い背景で締める */
+}
+
+.footer h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+}
+
+.footer-links a {
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--text-color);
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.5;
+}
+
+.copyright {
+    margin-top: 4rem;
+    font-family: var(--font-en);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(249, 248, 246, 0.97); /* 透過性のあるオフホワイト */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 3rem;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg);
+}
+
+.lightbox-content {
+    max-width: 80%;
+    max-height: 75vh;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 75vh;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.lightbox-caption {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    letter-spacing: 0.1em;
+}
+
+/* Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--trans-duration) var(--trans-ease), transform var(--trans-duration) var(--trans-ease);
+}
+
+.fade-in-up.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.3s;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 1.5rem 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-image-container {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .about {
+        padding: 5rem 1.5rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

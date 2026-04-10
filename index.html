@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一位一刀彫 | 飛騨高山の伝統工芸</title>
+    <meta name="description" content="飛騨を代表する伝統工芸「一位一刀彫」の紹介と作品ギャラリー。木目の美しさを活かし、色を付けない独特の彫刻をご紹介します。">
+    
+    <!-- Google Fonts: Shippori Mincho for elegant Japanese, Kaisei Tokumin for strong bold brush-like title -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Shippori+Mincho:wght@400;500;600&family=Kaisei+Tokumin:wght@800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar fade-in-up">
+        <div class="logo">
+            <h1>一位一刀彫</h1>
+            <span>Ichii Ittobori</span>
+        </div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-image-container fade-in">
+            <!-- ユーザーから提供された2枚の画像を切り替えて表示 -->
+            <img src="hero1.png" id="hero-img-1" alt="一位一刀彫 獅子" class="hero-image active" onerror="this.src='https://images.unsplash.com/photo-1615800000000-000000000000?q=80&w=2000&auto=format&fit=crop'">
+            <img src="hero2.png" id="hero-img-2" alt="一位一刀彫 恵比寿・大黒" class="hero-image" onerror="this.src='https://images.unsplash.com/photo-1615800000000-000000000000?q=80&w=2000&auto=format&fit=crop'">
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="about-container">
+                <div class="about-text fade-in-up">
+                    <h2 class="section-title">歴史と概要</h2>
+                    <p class="section-english">History & Overview</p>
+                    <div class="about-description">
+                        <p>江戸時代末期、飛騨の山のイチイ（櫟）という木材を用い、その木目の美しさを活かして作られるようになった根付が、一位一刀彫の始まりです。</p>
+                        <p>最大の特徴は、<strong>「彩色をしないこと」</strong>。</p>
+                        <p>イチイの木には、表皮に近い白い部分「白太（しろた）」と、中心に近い赤い部「赤太（あかた）」があります。職人はその色の違いを見極め、製品の形態とマッチするように工夫をこらしながら、一本の木から迫力ある彫刻を生み出します。</p>
+                        <p>鋭利で簡潔、表面にノミの彫り跡をあえて残す力強いタッチ。ロー仕上げによりイチイの持つ油気（タンニン質）を引き出し、年月が経つほどに深い色と艶を増していく、まさに時と共にある工芸品です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="gallery-header fade-in-up">
+                <h2 class="section-title">作品集</h2>
+                <p class="section-english">Gallery</p>
+                <p class="gallery-note">※以下の20点の写真は現在ダミーで作成しています。</p>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- JavaScriptで20個のダミー画像を動的に生成します -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2>一位一刀彫</h2>
+            <p>飛騨高山の伝統工芸</p>
+            <div class="footer-links">
+                <a href="#">上に戻る</a>
+            </div>
+            <p class="copyright">&copy; 2026 Ichii Ittobori Gallery. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="拡大画像">
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
