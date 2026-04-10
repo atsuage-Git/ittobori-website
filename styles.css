@@ -295,7 +295,15 @@ body {
 .footer p {
     color: var(--text-muted);
     font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.footer .producer {
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
     margin-bottom: 3rem;
+    color: var(--text-color);
 }
 
 .footer-links a {
