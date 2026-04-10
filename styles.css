@@ -70,6 +70,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    box-sizing: border-box; /* 100%幅でpaddingを指定した際のはみ出しを防ぐ */
     padding: 2rem 4rem;
     display: flex;
     justify-content: space-between;
